@@ -29,7 +29,8 @@ embarked = st.number_input("Embarked (0=C, 1=Q, 2=S)")
 
 
 if st.button("Predict"):
-    data = np.array([[pclass, sex, age, sibsp, parch, fare]])
+    data = np.array([[passengerid, pclass, sex, age, sibsp, parch, fare, embarked]], dtype=float)
+    st.write(data.shape)
     prediction = model.predict(data)
     if prediction[0] == 1:
         st.success("Passenger Survived")
