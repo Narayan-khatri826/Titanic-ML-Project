@@ -1,10 +1,10 @@
-# Fir uske andar ye code paste karo 👇
-
 import streamlit as st
 
 import pickle
 
 import numpy as np
+
+import pandas as pd
 
 model = pickle.load(open("model.pkl", "rb"))
 
@@ -26,30 +26,33 @@ fare = st.number_input("Fare")
 
 embarked = st.number_input("Embarked (0=C, 1=Q, 2=S)")
 
-
-
 if st.button("Predict"):
     data = np.array([[passengerid, pclass, sex, age, sibsp, parch, fare, embarked]], dtype=float)
-    st.write(data.shape)
     prediction = model.predict(data)
-    if prediction[0] == 1:
-        st.success("Passenger Survived")
-    else:
-        st.error("Passenger Did Not Survive")
-import pandas as pd
-
-prediction_data = pd.DataFrame({
-"PassengerClass": [pclass],
-"Sex": [sex],
-"Age": [age],
-"Prediction": [prediction[0]]
+    log_data = pd.DataFrame({
+    "PassengerId": [passengerid],
+    "Pclass": [pclass],
+    "Sex": [sex],
+    "Age": [age],
+    "SibSp": [sibsp],
+    "Parch": [parch],
+    "Fare": [fare],
+    "Embarked": [embarked],
+    "Prediction": [prediction[0]]
 })
+    log_data.to_csv(
+        "user_logs.csv",
+        mode="a",
+        header=False,
+        index=False
+    )
 
-prediction_data.to_csv(
-"user_logs.csv",
-mode="a",
-header=False,
-index=False
-)
-        
-
+    if prediction[0] == 1:
+    
+        st.success("Passenger Survived")
+    
+    else:
+    
+        st.error("Passenger Did Not Survive")
+            
+    
