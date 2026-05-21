@@ -36,4 +36,20 @@ if st.button("Predict"):
         st.success("Passenger Survived")
     else:
         st.error("Passenger Did Not Survive")
+import pandas as pd
+
+prediction_data = pd.DataFrame({
+"PassengerClass": [pclass],
+"Sex": [sex],
+"Age": [age],
+"Prediction": [prediction[0]]
+})
+
+prediction_data.to_csv(
+"user_logs.csv",
+mode="a",
+header=False,
+index=False
+)
+        
 
