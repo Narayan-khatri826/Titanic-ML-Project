@@ -56,3 +56,14 @@ if st.button("Predict"):
         st.error("Passenger Did Not Survive")
             
     
+st.subheader("User Logs")
+try:
+    logs = pd.read_csv("user_logs.csv")
+
+    st.dataframe(logs)
+except:
+    st.write("No logs available")
+    
+    
+    
+    
