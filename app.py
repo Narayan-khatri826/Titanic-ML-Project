@@ -7,7 +7,9 @@ import numpy as np
 import pandas as pd
 st.markdown("""
 
-<style> .stApp { background-color: #0f172a; } h1 { color: white; text-align: center; } .stButton > button { background-color: #38bdf8; color: white; border-radius: 10px; height: 50px; width: 100%; font-size: 20px; border: none; } .stNumberInput input { background-color: white; border-radius: 8px; } .stSelectbox div { background-color: white; border-radius: 8px; } </style>
+st.markdown("""
+
+<style> .stApp { background-color: #0f172a; } h1 { color: white !important; text-align: center; opacity: 1 !important; font-size: 55px !important; font-weight: bold; } .stButton > button { background-color: #38bdf8; color: white; border-radius: 10px; height: 50px; width: 100%; font-size: 20px; border: none; } .stButton > button:hover { background-color: #0ea5e9; color: white; } .stNumberInput input { background-color: white; border-radius: 8px; color: black; } .stSelectbox div { background-color: white; border-radius: 8px; color: black; } label { color: white !important; font-weight: bold; } </style>
 
 """, unsafe_allow_html=True)
 
