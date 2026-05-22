@@ -6,6 +6,12 @@ import numpy as np
 
 import pandas as pd
 
+st.markdown("""
+
+<style> .main { background-color: #0f172a; } h1 { color: #38bdf8; text-align: center; } .stButton>button { background-color: #38bdf8; color: white; border-radius: 10px; height: 50px; width: 100%; font-size: 20px; } .stNumberInput label { color: white; font-weight: bold; } .stSelectbox label { color: white; font-weight: bold; } </style>
+
+""", unsafe_allow_html=True)
+
 model = pickle.load(open("model.pkl", "rb"))
 
 st.title("Titanic Survival Prediction")
@@ -13,9 +19,14 @@ st.title("Titanic Survival Prediction")
 passengerid = st.number_input("Passenger ID")
 
 pclass = st.number_input("Passenger Class")
-
-sex = st.number_input("Sex (0=Male, 1=Female)")
-
+sex = st.selectbox(
+"Select Gender",
+["Male", "Female"]
+)
+if sex == "Male":
+    sex=0
+else:
+    sex=1
 age = st.number_input("Age")
 
 sibsp = st.number_input("Siblings/Spouse")
