@@ -13,9 +13,14 @@ st.title("Titanic Survival Prediction")
 passengerid = st.number_input("Passenger ID")
 
 pclass = st.number_input("Passenger Class")
-
-sex = st.number_input("Sex (0=Male, 1=Female)")
-
+sex = st.selectbox(
+"Select Gender",
+["Male", "Female"]
+)
+if sex == "Male":
+    sex=0
+else:
+    sex=1
 age = st.number_input("Age")
 
 sibsp = st.number_input("Siblings/Spouse")
